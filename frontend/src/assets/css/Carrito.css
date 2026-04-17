@@ -1,0 +1,124 @@
+/* ── Barra flotante inferior ── */
+.carrito-barra {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1d3557;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 500;
+    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.carrito-barra span {
+    font-size: 1rem;
+}
+
+/* ── Overlay de los modales ── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 600;
+}
+
+/* ── Modal genérico de aviso ── */
+.modal-aviso {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.modal-aviso p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ── Modal resumen del pedido ── */
+.modal-resumen {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 480px;
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.modal-resumen h2 {
+    margin-bottom: 1rem;
+}
+
+.modal-resumen-fila {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-resumen-total {
+    text-align: right;
+    margin-top: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.modal-resumen-botones {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* ── Botones ── */
+.btn-finalizar {
+    padding: 0.6rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    background: #e63946;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-ok {
+    padding: 0.6rem 2rem;
+    border-radius: 8px;
+    border: none;
+    background: #e63946;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-volver {
+    flex: 1;
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-confirmar {
+    flex: 1;
+    padding: 0.6rem;
+    border-radius: 8px;
+    border: none;
+    background: #e63946;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+}

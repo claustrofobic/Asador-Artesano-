@@ -1,0 +1,27 @@
+#cabeceraContainer {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 30px;
+    backdrop-filter: blur(4px);
+}
+
+.cabecera-items{
+    text-decoration: none;
+}
+
+button{
+    padding:10px;
+    border:none;
+    background-color: #3b1f1286;
+    border-radius: 10px;
+    font-size:15px;
+}
