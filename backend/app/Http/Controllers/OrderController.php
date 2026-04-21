@@ -19,23 +19,33 @@ class OrderController extends Controller
 }
 
     public function store(\Illuminate\Http\Request $request)
-    {
-        $plato = Plato::findOrFail($request->plato_id);
+{
 
-        $pedido = Pedido::create([
-            'usuario_id'   => auth()->id(),
-            'total'        => $plato->precio,
-            'hora_recogida'=> now()->addHour(),
-            'estado'       => 'recibido',
-        ]);
+    $total = 0;
+    $items = [];
 
-        $pedido->items()->create([
+    // recorre cada plato_id del array
+    foreach ($request->platos_ids as $plato_id) {
+        $plato = Plato::findOrFail($plato_id);
+        $total += $plato->precio;
+        $items[] = [
             'plato_id'        => $plato->id,
             'cantidad'        => 1,
             'precio_unitario' => $plato->precio,
-        ]);
-
-        return response()->json($pedido, 201);
-        //el 201 es el codigo para cuando se crea algo, avisa de q todo correcto
+        ];
     }
+
+    $pedido = Pedido::create([
+        'usuario_id'    => auth()->id(),
+        'total'         => $total,
+        'hora_recogida' => now()->addHour(),
+        'estado'        => 'recibido',
+    ]);
+
+    foreach ($items as $item) {
+        $pedido->items()->create($item);
+    }
+
+    return response()->json($pedido, 201);
+}
 }
