@@ -1,0 +1,212 @@
+.inicio-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 20px 60px;
+}
+
+/* Hero */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    padding: 60px 0 80px;
+}
+
+.hero-subtitulo {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-texto-claro);
+    margin-bottom: 16px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    color: var(--color-texto);
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.hero-descripcion {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--color-texto-claro);
+    margin-bottom: 30px;
+    max-width: 480px;
+}
+
+.btn-hero {
+    display: inline-block;
+    background: var(--color-primario);
+    color: white !important;
+    padding: 14px 28px;
+    border-radius: var(--radio);
+    font-size: 1rem;
+    font-family: var(--fuente-cuerpo);
+    transition: all 0.2s;
+}
+
+.btn-hero:hover {
+    background: var(--color-secundario);
+    transform: translateY(-2px);
+}
+
+.hero-imagen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-crema);
+    border: 1px solid var(--color-borde);
+    border-radius: 16px;
+    height: 320px;
+    box-shadow: var(--sombra);
+}
+
+.hero-placeholder {
+    font-size: 6rem;
+}
+
+/* Destacados */
+.destacados {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.destacados h2 {
+    font-size: 2.2rem;
+    font-style: italic;
+    margin-bottom: 8px;
+}
+
+.destacados-subtitulo {
+    color: var(--color-texto-claro);
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+
+.destacados-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    text-align: left;
+}
+
+.tarjeta-destacado {
+    background: var(--color-crema);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    padding: 28px;
+    box-shadow: var(--sombra);
+    transition: transform 0.2s;
+    position: relative;
+}
+
+.tarjeta-destacado:hover {
+    transform: translateY(-4px);
+}
+
+.tarjeta-destacada-principal {
+    border-color: var(--color-primario);
+    border-width: 2px;
+}
+
+.tarjeta-icono {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.badge-estrella {
+    display: inline-block;
+    background: var(--color-primario);
+    color: white;
+    font-size: 0.75rem;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+}
+
+.tarjeta-destacado h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.tarjeta-destacado p {
+    color: var(--color-texto-claro);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.desde {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-texto);
+}
+
+/* Por qué elegirnos */
+.por-que {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.por-que h2 {
+    font-size: 2rem;
+    font-style: italic;
+    margin-bottom: 36px;
+}
+
+.por-que-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.por-que-item {
+    padding: 24px;
+}
+
+.por-que-item span {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.por-que-item h4 {
+    font-family: var(--fuente-titulo);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.por-que-item p {
+    color: var(--color-texto-claro);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* CTA final */
+.cta-final {
+    background: var(--color-crema);
+    border: 1px solid var(--color-borde);
+    border-radius: 16px;
+    padding: 60px;
+    text-align: center;
+    box-shadow: var(--sombra);
+}
+
+.cta-final h2 {
+    font-size: 2rem;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.cta-final p {
+    color: var(--color-texto-claro);
+    margin-bottom: 24px;
+    font-size: 1.05rem;
+}

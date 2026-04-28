@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+    --color-fondo: #f0ebe3;
+    --color-primario: #2c1810;
+    --color-secundario: #5c3d2e;
+    --color-acento: #2c1810;
+    --color-texto: #2c1810;
+    --color-texto-claro: #7a5c4a;
+    --color-crema: #faf7f2;
+    --color-borde: #e0d5c8;
+    --fuente-titulo: 'Playfair Display', serif;
+    --fuente-cuerpo: 'Crimson Text', serif;
+    --sombra: 0 2px 16px rgba(44, 24, 16, 0.08);
+    --radio: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-cuerpo);
+    font-size: 1.05rem;
+    padding-top: 80px;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    font-family: var(--fuente-titulo);
+}
+
+a {
+    color: var(--color-primario);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--color-secundario);
+}
+
+button {
+    cursor: pointer;
+    font-family: var(--fuente-cuerpo);
+}

@@ -17,7 +17,7 @@ class OrderController extends Controller
 
     return response()->json($pedidos);
 }
-
+    //funcion q crea un nuevo pedido
     public function store(\Illuminate\Http\Request $request)
 {
 
@@ -25,22 +25,23 @@ class OrderController extends Controller
     $items = [];
 
     // recorre cada plato_id del array
-    foreach ($request->platos_ids as $plato_id) {
-        $plato = Plato::findOrFail($plato_id);
-        $total += $plato->precio;
-        $items[] = [
-            'plato_id'        => $plato->id,
-            'cantidad'        => 1,
-            'precio_unitario' => $plato->precio,
-        ];
+foreach ($request->items as $item) {
+        $plato = Plato::findOrFail($item['plato_id']);
+        $total += $plato->precio * $item['cantidad'];
+    $items[] = [
+    'plato_id'        => $plato->id,
+    'cantidad'        => $item['cantidad'],
+    'precio_unitario' => $plato->precio,
+];
     }
 
     $pedido = Pedido::create([
-        'usuario_id'    => auth()->id(),
-        'total'         => $total,
-        'hora_recogida' => now()->addHour(),
-        'estado'        => 'recibido',
-    ]);
+    'usuario_id'     => auth()->id(),
+    'total'          => $total,
+    'hora_recogida'  => $request->hora_recogida,
+    'estado'         => 'recibido',
+    'medio_pago'     => $request->medio_pago,
+]);
 
     foreach ($items as $item) {
         $pedido->items()->create($item);

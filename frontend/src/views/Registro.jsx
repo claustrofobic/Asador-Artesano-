@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import { register } from '../services/api';
 import {useAuth} from '../context/AuthContext';
+import '../assets/css/auth.css';
 
 function Registro() {
     //variables para los campos
@@ -30,7 +31,8 @@ function Registro() {
         }
     };
     return (
-    <div>
+    <div className="auth-container">
+
         <h1>Registro</h1>
         {error && <p style={{color:'red'}}>{error}</p>}
             <form onSubmit={registrarseSubmit}>

@@ -15,8 +15,12 @@ export function CarritoProvider({ children }) {
         setCarrito([]);
     };
 
+    const eliminarPlato = (platoId)=>{
+        setCarrito(carritoActual => carritoActual.filter(plato => plato.id !== platoId));
+    }
+
     return (
-        <CarritoContext.Provider value={{ carrito, añadirPlato, vaciarCarrito }}>
+        <CarritoContext.Provider value={{ carrito, añadirPlato, vaciarCarrito, eliminarPlato }}>
             {children}
         </CarritoContext.Provider>
     );

@@ -1,0 +1,123 @@
+.quienes-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+}
+
+.quienes-hero {
+    text-align: center;
+    padding: 50px 0 60px;
+    border-bottom: 1px solid var(--color-borde);
+    margin-bottom: 60px;
+}
+
+.quienes-hero h1 {
+    font-size: 3rem;
+    font-style: italic;
+    margin-bottom: 14px;
+}
+
+.quienes-lema {
+    color: var(--color-texto-claro);
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+/* Historia */
+.quienes-historia {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 60px;
+    align-items: start;
+    margin-bottom: 70px;
+}
+
+.historia-texto h2 {
+    font-size: 1.8rem;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.historia-texto p {
+    color: var(--color-texto-claro);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.historia-datos {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.dato {
+    background: var(--color-crema);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    padding: 20px;
+    text-align: center;
+    box-shadow: var(--sombra);
+}
+
+.dato-numero {
+    display: block;
+    font-family: var(--fuente-titulo);
+    font-size: 2.2rem;
+    color: var(--color-primario);
+    font-weight: 700;
+}
+
+.dato-label {
+    font-size: 0.85rem;
+    color: var(--color-texto-claro);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* Valores */
+.quienes-valores {
+    text-align: center;
+}
+
+.quienes-valores h2 {
+    font-size: 2rem;
+    font-style: italic;
+    margin-bottom: 36px;
+}
+
+.valores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.valor-item {
+    background: var(--color-crema);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    padding: 24px 16px;
+    box-shadow: var(--sombra);
+    transition: transform 0.2s;
+}
+
+.valor-item:hover {
+    transform: translateY(-3px);
+}
+
+.valor-item span {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.valor-item h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.valor-item p {
+    color: var(--color-texto-claro);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}

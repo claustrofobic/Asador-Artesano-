@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import App from './App.jsx'
 import { CarritoProvider } from './context/CarritoContext.jsx'
-import './assets/css/index.css';
+import './assets/css/global.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

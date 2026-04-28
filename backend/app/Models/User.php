@@ -4,6 +4,7 @@ namespace App\Models;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable
 {
     //para q funcionen los tokens y sus métodos
@@ -26,4 +27,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Pedido::class, 'usuario_id');
     }
+
+    public function favoritos()
+{
+    return $this->hasMany(Favorito::class, 'user_id');
+}
 }

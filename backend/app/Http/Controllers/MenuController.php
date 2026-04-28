@@ -9,7 +9,7 @@ class MenuController extends Controller
     {
         // trae categorías con sus platos disponibles
         $categorias = Categoria::with(['platos' => function($q) {
-            $q->where('disponible', true);
+            $q->where('disponible', true) ->with('alergenos');
         }])->orderBy('orden')->get();//y los ordena por el campo orden en la tabla
 
         return response()->json($categorias);

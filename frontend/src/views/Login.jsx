@@ -5,7 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { login } from '../services/api';
 // y el método del login q conecta con la api para llevar la lógica (backend)
 import { useAuth } from '../context/AuthContext';
-// y el useAuth para guardar el token del login en el contexto 
+// y el useAuth para guardar el token del login en el contexto
+import '../assets/css/auth.css'; 
 
 
 function Login() {
@@ -38,7 +39,7 @@ function Login() {
 
     return (
         //formulario del login
-        <div>
+        <div className="auth-container">
     <h1>Login</h1>
     {error && <p style={{color: 'red'}}>{error}</p>}
             <form onSubmit={iniciarSesionSubmit}>
@@ -50,6 +51,7 @@ function Login() {
         </label>
         <button type="submit">Entrar</button>
     </form>
+    <button id="btn-registro" type="button" onClick={() => navigate('/registro')}>¿No tienes cuenta? Regístrate</button> 
         </div>
 
     )

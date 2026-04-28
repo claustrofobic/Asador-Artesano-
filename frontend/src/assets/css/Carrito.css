@@ -1,124 +1,109 @@
-/* ── Barra flotante inferior ── */
-.carrito-barra {
+.carrito-flotante {
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #1d3557;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+}
+
+.btn-carrito {
+    background: var(--color-primario);
     color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 500;
-    box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
-}
-
-.carrito-barra span {
+    border: none;
+    padding: 14px 22px;
+    border-radius: 50px;
     font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 4px 20px rgba(44, 24, 16, 0.4);
+    transition: all 0.2s;
 }
 
-/* ── Overlay de los modales ── */
+.btn-carrito:hover {
+    background: var(--color-secundario);
+    transform: translateY(-2px);
+}
+
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0,0,0,0.6);
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 600;
 }
 
-/* ── Modal genérico de aviso ── */
-.modal-aviso {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
-    max-width: 400px;
+.modal-carrito {
+    background: var(--color-crema);
+    border-radius: 8px;
+    padding: 32px;
     width: 90%;
-    text-align: center;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-}
-
-.modal-aviso p {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-}
-
-/* ── Modal resumen del pedido ── */
-.modal-resumen {
-    background: white;
-    border-radius: 12px;
-    padding: 2rem;
     max-width: 480px;
-    width: 90%;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 
-.modal-resumen h2 {
-    margin-bottom: 1rem;
+.modal-carrito h2 {
+    font-size: 1.8rem;
+    color: var(--color-primario);
+    margin-bottom: 20px;
 }
 
-.modal-resumen-fila {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.4rem 0;
-    border-bottom: 1px solid #eee;
+.modal-carrito p {
+    color: var(--color-texto-claro);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-borde);
+    font-size: 0.95rem;
 }
 
-.modal-resumen-total {
-    text-align: right;
-    margin-top: 1rem;
-    font-weight: bold;
-    font-size: 1.1rem;
-}
-
-.modal-resumen-botones {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1.5rem;
-}
-
-/* ── Botones ── */
-.btn-finalizar {
-    padding: 0.6rem 1.5rem;
-    border-radius: 8px;
-    border: none;
-    background: #e63946;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.btn-ok {
-    padding: 0.6rem 2rem;
-    border-radius: 8px;
-    border: none;
-    background: #e63946;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.btn-volver {
-    flex: 1;
-    padding: 0.6rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    background: white;
-    font-size: 1rem;
-    cursor: pointer;
+.total-carrito {
+    font-size: 1.3rem !important;
+    font-weight: 700;
+    color: var(--color-texto) !important;
+    border-bottom: none !important;
+    margin-top: 10px;
+    font-family: var(--fuente-titulo);
 }
 
 .btn-confirmar {
-    flex: 1;
-    padding: 0.6rem;
-    border-radius: 8px;
-    border: none;
-    background: #e63946;
+    width: 100%;
+    background: var(--color-acento);
     color: white;
+    border: none;
+    padding: 13px;
+    border-radius: var(--radio);
     font-size: 1rem;
-    cursor: pointer;
-    font-weight: bold;
+    font-weight: 700;
+    margin-top: 16px;
+    transition: all 0.2s;
+}
+
+.btn-confirmar:hover {
+    background: #a01830;
+}
+
+.btn-cerrar {
+    width: 100%;
+    background: transparent;
+    color: var(--color-texto-claro);
+    border: 1px solid var(--color-borde);
+    padding: 10px;
+    border-radius: var(--radio);
+    font-size: 0.9rem;
+    margin-top: 8px;
+    transition: all 0.2s;
+}
+
+.btn-cerrar:hover {
+    background: var(--color-borde);
+    color: white;
+}
+
+.btn-eliminar-plato {
+    background: #a01830;
+    color: white;
+    border-radius: 50px;
+    padding: 6px 12px;
+    border: none;
+    font-size: 0.8rem;
+    margin-left: 10px;
+    transition: all 0.2s;
 }
