@@ -24,9 +24,12 @@ function MisFavoritos() {
                         <h2>{favorito.plato.nombre}</h2>
                         <p>{favorito.plato.descripcion}</p>
                         <p className="precio">{favorito.plato.precio} €</p>
-                    {favorito.plato.imagenes.map((imagen, index) => (
-                        <img key={index} src={imagen} alt={favorito.plato.nombre} />
-                    ))}
+                        
+                    {favorito.plato.imagen_url ?
+                        <img src={favorito.plato.imagen_url} alt={favorito.plato.nombre} />
+                    :
+                        <p>No hay imagen disponible</p>
+                    }
                     </div>
                 ))
             )}

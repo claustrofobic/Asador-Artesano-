@@ -7,6 +7,10 @@ class Plato extends Model
 {
     protected $table = 'platos';
 
+    protected $fillable = ['categoria_id', 'nombre', 'descripcion', 'precio', 'imagen_url', 'disponible'];
+    const UPDATED_AT = null;
+
+
     public function categoria()
     {
         return $this->belongsTo(Categoria::class);

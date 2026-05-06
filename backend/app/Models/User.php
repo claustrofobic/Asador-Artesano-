@@ -14,9 +14,10 @@ class User extends Authenticatable
     //no tengo el campo updated_at así q lo deja vacio, pero sí permite el created at pq ese si que lo tengo
     const UPDATED_AT = null;
     //los datos que puede rellenar
-    protected $fillable = ['nombre', 'email', 'telefono', 'password_hash'];
+    protected $fillable = ['rol','nombre', 'email', 'telefono', 'password_hash'];
     //oculta la constraseña
     protected $hidden = ['password_hash'];
+    protected $authPasswordName = 'password_hash';
 
     public function getAuthPassword()
     {

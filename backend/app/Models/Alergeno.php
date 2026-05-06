@@ -10,7 +10,7 @@ class Alergeno extends Model
     //para que no use la columna de created at
     public $timestamps = false;
 
-    //NO uso el fillable porque los datos solo los voy a insertar manualmente desde la bbdd
+    protected $fillable = ['nombre'];
 
     //relacion con platos, una Alergeno puede tener muchos platos
     public function platos()

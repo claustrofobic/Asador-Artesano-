@@ -21,6 +21,7 @@ class RegisterController extends Controller
         ]);
         //crea el usuario
         $usuario = User::create([
+            'rol' => 'user', //asignamos el rol de usuario por defecto
             'nombre'        => $request->nombre,
             'email'         => $request->email,
             'telefono'      => $request->telefono,

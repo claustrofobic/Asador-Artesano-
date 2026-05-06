@@ -17,6 +17,23 @@ class OrderController extends Controller
 
     return response()->json($pedidos);
 }
+
+    public function indexAdmin(){
+        $pedidos = Pedido::query()
+        ->with(['items.plato', 'usuario']) // carga los items, el plato de cada item y el usuario que hizo el pedido
+        ->orderBy('created_at', 'desc')
+        ->get();
+        return response()->json($pedidos);
+    }
+
+    public function updateEstado($id, \Illuminate\Http\Request $request)
+    {
+        $pedido = Pedido::findOrFail($id);
+        $pedido->estado = $request->estado;
+        $pedido->save();
+
+        return response()->json($pedido);
+    }
     //funcion q crea un nuevo pedido
     public function store(\Illuminate\Http\Request $request)
 {
@@ -39,7 +56,7 @@ foreach ($request->items as $item) {
     'usuario_id'     => auth()->id(),
     'total'          => $total,
     'hora_recogida'  => $request->hora_recogida,
-    'estado'         => 'recibido',
+    'estado'         => 'pendiente',
     'medio_pago'     => $request->medio_pago,
 ]);
 

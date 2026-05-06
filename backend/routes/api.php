@@ -5,6 +5,9 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\FavoritoController;
+use App\Http\Controllers\PlatoController;
+use App\Http\Controllers\AlergenosController;
+
 
 // ── Rutas públicas ──────────────────────────────────────
 Route::get('/platos',      [MenuController::class,  'index']);
@@ -22,4 +25,22 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/favoritos',   [FavoritoController::class, 'store']);
     Route::delete('/favoritos/{id}', [FavoritoController::class, 'destroy']);
     Route::post('/logout',      [LoginController::class, 'logout']);
+
+
+    Route::middleware('es_admin')->group(function () {
+        Route::get('/admin/pedidos',      [OrderController::class,  'indexAdmin']);
+        Route::put('/pedidos/{id}', [OrderController::class,  'updateEstado']);
+        Route::post('/admin/platos', [PlatoController::class, 'store']);
+        Route::put('/admin/platos/{id}', [PlatoController::class, 'update']);
+        Route::delete('/admin/platos/{id}', [PlatoController::class, 'destroy']);
+        Route::get('/admin/categorias', [PlatoController::class, 'showCategorias']);
+        Route::get('/admin/alergenos', [PlatoController::class, 'showAlergenos']);
+        Route::get('/admin/platos/{id}', [PlatoController::class, 'index']);
+        Route::post('/admin/alergenos', [AlergenosController::class, 'store']);
+        Route::put('/admin/alergenos/{id}', [AlergenosController::class, 'update']);
+        Route::delete('/admin/alergenos/{id}', [AlergenosController::class, 'destroy']);
+        Route::get('/admin/alergenos/{id}', [AlergenosController::class, 'index']);
+
+    });
+
 });

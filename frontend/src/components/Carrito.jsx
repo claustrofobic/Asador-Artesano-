@@ -56,7 +56,7 @@ function Carrito() {
 
     vaciarCarrito();
     setHoraRecogida("");
-    setMedioPago("local");
+    setMedioPago("pago_en_local");
     setMostrarResumen(false);
     setModal("¡Pedido confirmado! Puedes ver el estado en Mis pedidos.");
   };

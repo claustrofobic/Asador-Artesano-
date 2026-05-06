@@ -28,7 +28,7 @@ function Login() {
 
         if (respuesta.token) {
             // guarda el token en el navegador
-            iniciarSesion(respuesta.token);
+            iniciarSesion(respuesta.token, respuesta.usuario);
             // redirige a la carta
             navigate('/carta');
         } else {

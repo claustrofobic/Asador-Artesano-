@@ -32,9 +32,8 @@ const request = async (endpoint, options = {}) => {
   return response.json();
 };
 
-              /* PETICIONES POST */
-// petición GET a /api/platos
-export const getPlatos = () => request("/platos");
+/* PETICIONES POST */
+
 
 // petición POST a /api/login
 export const login = (email, password) =>
@@ -69,13 +68,29 @@ export const setFavorito = (platoId) =>
     body: JSON.stringify({ plato_id: platoId }),
   });
 
+export const setPlato = (datos) =>
+  request("/admin/platos", {
+    method: "POST",
+    body: JSON.stringify(datos),
+  });
 
-  /* PETICIONES GET */
+
+/* PETICIONES GET */
+// petición GET a /api/platos
+export const getPlatos = () => request("/platos");
+// petición GET a /api/platos/{id}
+export const getPlato = (id) => request(`/admin/platos/${id}`);
 // petición GET a /api/favoritos
 export const getFavoritos = () => request("/favoritos");
 
 // petición GET a /api/mis-pedidos
 export const getMisPedidos = () => request("/mis-pedidos");
+
+export const getPedidosAdmin = () => request("/admin/pedidos");
+
+export const getCategorias = () => request("/admin/categorias");
+
+export const getAlergenos = () => request("/admin/alergenos");
 
 
 /* PETICIONES DELETE */
@@ -83,4 +98,22 @@ export const getMisPedidos = () => request("/mis-pedidos");
 export const deleteFavorito = (id) =>
   request(`/favoritos/${id}`, {
     method: "DELETE",
+  });
+
+export const deletePlato = (id) =>
+  request(`/admin/platos/${id}`, {
+    method: "DELETE",
+  });
+
+/* PETICIONES PUT */
+export const updateEstadoPedido = (id, estado) =>
+  request(`/pedidos/${id}`, {
+    method: "PUT",
+    body: JSON.stringify({ estado }),
+  });
+
+export const updatePlato = (id, datos) =>
+  request(`/admin/platos/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(datos),
   });
