@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
+import "../assets/css/admin.css";
 
 function AdminLayout({ children }) {
   return (
     <div className="admin-layout">
       <aside className="admin-sidebar">
         <nav>
-          <Link to="/admin">Dashboard</Link>
           <Link to="/admin/pedidos">Pedidos</Link>
           <Link to="/admin/platos">Platos</Link>
           <Link to="/admin/alergenos">Alérgenos</Link>

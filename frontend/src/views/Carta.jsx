@@ -17,14 +17,13 @@ function Carta() {
     const cargarPlatos = async () => {
       const datos = await getPlatos();
       setCategorias(datos);
+      if (token) {
+        const favs = await getFavoritos();
+        setFavoritos(favs);
+      }
     };
 
-    const cargarFavoritos = async () => {
-      const favoritos = await getFavoritos();
-      setFavoritos(favoritos);
-  };
     cargarPlatos();
-    cargarFavoritos();
   }, []);
 
   const setPedidoBtn = async (plato) => {
@@ -35,8 +34,6 @@ function Carta() {
       navigate("/login");
     }
   };
-
-  
 
   const esFavorito = (platoId) => favoritos.some((f) => f.plato_id === platoId);
 
@@ -50,12 +47,15 @@ function Carta() {
       setFavoritos([...favoritos, nuevoFavorito]);
     }
   };
+
   return (
     <div className="carta-container">
       <h1>Nuestra Carta</h1>
-      <button className="btn-favoritos" onClick={() => navigate("/favoritos")}>
-        Ver Favoritos
-      </button>
+      {token && (
+        <button className="btn-favoritos" onClick={() => navigate("/favoritos")}>
+          Ver Favoritos
+        </button>
+      )}
       {categorias.map((categoria) => (
         <div key={categoria.id} className="categoria-seccion">
           <h2>{categoria.nombre}</h2>
@@ -70,19 +70,21 @@ function Carta() {
                   </p>
                 )}
                 <p className="precio">{plato.precio} €</p>
-                <button onClick={() => toggleFavorito(plato)}>
-                  {esFavorito(plato.id) ? (
-                    <i
-                      className="fa-solid fa-heart"
-                      style={{ color: "rgb(157, 13, 0)" }}
-                    ></i>
-                  ) : (
-                    <i
-                      className="fa-regular fa-heart"
-                      style={{ color: "rgb(157, 13, 0)" }}
-                    ></i>
-                  )}
-                </button>
+                {token && (
+                  <button onClick={() => toggleFavorito(plato)}>
+                    {esFavorito(plato.id) ? (
+                      <i
+                        className="fa-solid fa-heart"
+                        style={{ color: "rgb(157, 13, 0)" }}
+                      ></i>
+                    ) : (
+                      <i
+                        className="fa-regular fa-heart"
+                        style={{ color: "rgb(157, 13, 0)" }}
+                      ></i>
+                    )}
+                  </button>
+                )}
                 <button
                   className="btn-pedido"
                   onClick={() => setPedidoBtn(plato)}

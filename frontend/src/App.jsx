@@ -46,6 +46,7 @@ function App() {
   } else {
     return (
       <>
+      <Navbar />
         <AdminLayout>
         <Routes>
           <Route path="/" element={<Inicio />} />
@@ -65,6 +66,8 @@ function App() {
           <Route path="/admin/estadisticas" element={<RutaAdmin><AdminEstadisticas /></RutaAdmin>} />
           <Route path="/admin/platos/nuevo" element={<RutaAdmin><FormularioPlato /></RutaAdmin>} />
           <Route path="/admin/platos/:id/editar" element={<RutaAdmin><FormularioPlato /></RutaAdmin>} />
+
+
 
         </Routes>
         </AdminLayout>

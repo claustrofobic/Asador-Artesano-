@@ -47,9 +47,9 @@ function FormularioPlato() {
     };
 
     return (
-        <div className="formulario-plato-container">
+        <div className="formulario-admin-container">
             <h1>{esEdicion ? "Editar Plato" : "Nuevo Plato"}</h1>
-            <form className="formulario-plato" onSubmit={guardarPlato}>
+            <form className="formulario-admin" onSubmit={guardarPlato}>
 
                 <label>Nombre:</label>
                 <input type="text" name="nombre" value={plato.nombre} onChange={handleChange} />
@@ -74,7 +74,7 @@ function FormularioPlato() {
                 <label>Disponible:</label>
                 <input type="checkbox" name="disponible" checked={!!plato.disponible} onChange={handleChange} />
 
-                <button type="submit" className="addPlatoMenu">Guardar</button>
+                <button type="submit" className="btn-guardar">Guardar</button>
             </form>
         </div>
     );

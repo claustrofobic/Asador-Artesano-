@@ -32,7 +32,9 @@ const request = async (endpoint, options = {}) => {
   return response.json();
 };
 
-/* PETICIONES POST */
+/* ===============
+  PETICIONES POST 
+================ */
 
 
 // petición POST a /api/login
@@ -74,8 +76,17 @@ export const setPlato = (datos) =>
     body: JSON.stringify(datos),
   });
 
+export const setAlergeno = (datos) =>
+  request("/admin/alergenos", {
+    method: "POST",
+    body: JSON.stringify(datos),
+  });
 
-/* PETICIONES GET */
+
+/* =======================
+      PETICIONES GET 
+=======================   */
+
 // petición GET a /api/platos
 export const getPlatos = () => request("/platos");
 // petición GET a /api/platos/{id}
@@ -86,11 +97,40 @@ export const getFavoritos = () => request("/favoritos");
 // petición GET a /api/mis-pedidos
 export const getMisPedidos = () => request("/mis-pedidos");
 
+// petición GET a /api/admin/pedidos
 export const getPedidosAdmin = () => request("/admin/pedidos");
 
+// petición GET a /api/admin/categorias
 export const getCategorias = () => request("/admin/categorias");
 
+// petición GET a /api/admin/alergenos
 export const getAlergenos = () => request("/admin/alergenos");
+
+// petición GET a /api/admin/estadisticas
+export const getEstadisticas = () => request("/admin/estadisticas");
+
+export const descargarPedidoPdf = async (id) => {
+    const token = localStorage.getItem("token");
+    
+    const response = await fetch(`${API_URL}/pedidos/${id}/pdf`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || "Error al generar el PDF");
+    }
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `pedido-${id}.pdf`;
+    a.click();
+    window.URL.revokeObjectURL(url);
+};
 
 
 /* PETICIONES DELETE */
@@ -105,6 +145,11 @@ export const deletePlato = (id) =>
     method: "DELETE",
   });
 
+export const deleteAlergeno = (id) =>
+  request(`/admin/alergenos/${id}`, {
+    method: "DELETE",
+  });
+
 /* PETICIONES PUT */
 export const updateEstadoPedido = (id, estado) =>
   request(`/pedidos/${id}`, {
@@ -114,6 +159,12 @@ export const updateEstadoPedido = (id, estado) =>
 
 export const updatePlato = (id, datos) =>
   request(`/admin/platos/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(datos),
+  });
+
+export const updateAlergeno = (id, datos) =>
+  request(`/admin/alergenos/${id}`, {
     method: "PUT",
     body: JSON.stringify(datos),
   });

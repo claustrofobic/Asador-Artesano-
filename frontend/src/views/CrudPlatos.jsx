@@ -32,6 +32,7 @@ function CrudPlatos() {
       <button className="btn-agregar" onClick={() => navigate("/admin/platos/nuevo")}>
         Agregar Plato
       </button>
+      
       {categorias.map((categoria) => (
         <div key={categoria.id} className="categoria-seccion">
           <h2>{categoria.nombre}</h2>

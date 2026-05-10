@@ -1,14 +1,14 @@
-import {useState, useEffect } from 'react';
-import { getMisPedidos } from '../services/api';
+import { useState, useEffect } from 'react';
+import { getMisPedidos, descargarPedidoPdf } from '../services/api';
 import '../assets/css/pedidos.css';
 
 function MisPedidos() {
     const [mis_pedidos, setMisPedidos] = useState([]);
 
     useEffect(() => {
-        const cargarMisPedidos = async () =>{
+        const cargarMisPedidos = async () => {
             const datos = await getMisPedidos();
-            setMisPedidos(datos);
+            setMisPedidos(Array.isArray(datos) ? datos : []);
         };
         cargarMisPedidos();
     }, []);
@@ -22,6 +22,9 @@ function MisPedidos() {
                 mis_pedidos.map(pedido => (
                     <div key={pedido.id} className="tarjeta-pedido">
                         <h2>Pedido #{pedido.id}</h2>
+                        <button className="btn-accion" onClick={() => descargarPedidoPdf(pedido.id)}>
+                            Descargar detalles del pedido
+                        </button>
                         <p className="estado-badge">Estado: {pedido.estado}</p>
                         <p>Fecha: {new Date(pedido.created_at).toLocaleDateString('es-ES')}</p>
                         <p>Total: {pedido.total} €</p>

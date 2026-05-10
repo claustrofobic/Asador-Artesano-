@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import logo  from '../assets/img/logoAsadorArtesano.png';
 import '../assets/css/navbar.css';
 
 function Navbar() {
@@ -19,7 +20,7 @@ function Navbar() {
     return (
         <div id="cabeceraContainer">
         <nav>
-            <img src="../assets/img/logoAsadorArtesano.png"></img>
+            <img src={logo} alt="Logo Asador Artesano" />
             <div className="cabecera-item">
             <Link to="/">Inicio</Link>
             </div>

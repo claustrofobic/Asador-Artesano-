@@ -1,12 +1,12 @@
-import {useState, useEffect } from 'react';
-import { getPedidosAdmin, updateEstadoPedido } from '../services/api';
+import { useState, useEffect } from 'react';
+import { getPedidosAdmin, updateEstadoPedido, descargarPedidoPdf } from '../services/api';
 import '../assets/css/pedidos.css';
 
 function AdminPedidos() {
     const [mis_pedidos, setMisPedidos] = useState([]);
 
     useEffect(() => {
-        const cargarMisPedidos = async () =>{
+        const cargarMisPedidos = async () => {
             const datos = await getPedidosAdmin();
             setMisPedidos(datos);
         };
@@ -29,9 +29,12 @@ function AdminPedidos() {
                 mis_pedidos.map(pedido => (
                     <div key={pedido.id} className="tarjeta-pedido">
                         <h2>Pedido #{pedido.id}</h2>
+                        <button className="btn-accion" onClick={() => descargarPedidoPdf(pedido.id)}>
+                            Descargar detalles del pedido
+                        </button>
                         <p>Cliente: {pedido.usuario.nombre}</p>
                         <p className="estado-badge">Estado: {pedido.estado}</p>
-                        {pedido.estado === 'pendiente' ? (<button className="btn-accion" onClick={() => actualizarEstado(pedido.id, 'recibido')}>Marcar como Recibido</button>) : (<span className="badge-recibido">PEDIDO YA RECIBIDO</span> )}
+                        {pedido.estado === 'pendiente' ? (<button className="btn-accion" onClick={() => actualizarEstado(pedido.id, 'recibido')}>Marcar como Recibido</button>) : (<span className="badge-recibido">PEDIDO YA RECIBIDO</span>)}
                         <p>Fecha: {new Date(pedido.created_at).toLocaleDateString('es-ES')}</p>
                         <p>Total: {pedido.total} €</p>
                         {pedido.items.map(item => (

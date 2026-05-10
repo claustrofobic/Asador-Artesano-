@@ -15,6 +15,6 @@ class Alergeno extends Model
     //relacion con platos, una Alergeno puede tener muchos platos
     public function platos()
     {
-        return $this->hasMany(Plato::class);
+        return $this->belongsToMany(Plato::class);
     }
 }

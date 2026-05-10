@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class AlergenosController extends Controller
 {
+    public function show(Request $request)
+    {
+        $alergenos = \App\Models\Alergeno::all();
+        return response()->json($alergenos);
+    }
 
     public function store(Request $request)
     {
