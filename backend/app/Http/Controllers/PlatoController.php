@@ -22,23 +22,23 @@ class PlatoController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $plato = \App\Models\Plato::create($request->all());
-        if ($request->has('alergenos')) {
-            $plato->alergenos()->sync($request->alergenos);
-        }
-        return response()->json($plato, 201);
+{
+    $plato = \App\Models\Plato::create($request->except('alergenos')); // ← excluye alérgenos
+    if ($request->has('alergenos')) {
+        $plato->alergenos()->sync($request->alergenos);
     }
+    return response()->json($plato, 201);
+}
 
     public function update(Request $request, $id)
-    {
-        $plato = \App\Models\Plato::findOrFail($id);
-        $plato->update($request->all());
-        if ($request->has('alergenos')) {
-            $plato->alergenos()->sync($request->alergenos);
-        }
-        return response()->json($plato);
+{
+    $plato = \App\Models\Plato::findOrFail($id);
+    $plato->update($request->except('alergenos')); // ← ídem
+    if ($request->has('alergenos')) {
+        $plato->alergenos()->sync($request->alergenos);
     }
+    return response()->json($plato);
+}
 
     public function destroy($id)
     {
