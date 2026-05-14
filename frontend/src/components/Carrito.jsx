@@ -5,13 +5,15 @@ import { useState } from "react";
 import Modal from "./Modal";
 import "../assets/css/carrito.css";
 
-// Agrupa el array plano del carrito por id
+// agrupa el array plano del carrito por id
 const agruparItems = (items) => {
   const mapa = new Map();
   items.forEach((item) => {
+    // si el plato ya existe, sumamos cantidad, sino lo añadimos con cantidad 1
     if (mapa.has(item.id)) {
       mapa.get(item.id).cantidad += 1;
     } else {
+      //sino existe, lo añadimos con cantidad 1
       mapa.set(item.id, { ...item, cantidad: 1 });
     }
   });
@@ -28,28 +30,32 @@ function Carrito() {
 
   if (!token || carrito.length === 0) return null;
 
+  // agrupamos el carrito para mostrar cantidad y calcular total
   const itemsAgrupados = agruparItems(carrito);
 
+  // calculamos el total sumando precio * cantidad de cada plato
   const total = itemsAgrupados.reduce(
     (acc, item) => acc + parseFloat(item.precio) * item.cantidad,
     0
   );
 
   const confirmarPedido = async () => {
+    // si no hay hora de recogida, mostramos error y no cerramos el resumen
     if (!horaRecogida) {
       setModal("Por favor, elige una hora de recogida.");
       setMostrarResumen(false);
       return;
     }
 
-    // Enviamos ya con la cantidad real agrupada
+    // enviamos ya con la cantidad real agrupada
     const items = itemsAgrupados.map((item) => ({
       plato_id: item.id,
       cantidad: item.cantidad,
     }));
-
+    // lo manda al controlador con los datos
     await setPedido(items, horaRecogida, medioPago);
 
+    //vacia el carrito, limpia la hora de recogida y el medio de pago
     vaciarCarrito();
     setHoraRecogida("");
     setMedioPago("pago_en_local");

@@ -4,7 +4,7 @@ import '../assets/css/pedidos.css';
 
 function MisPedidos() {
     const [mis_pedidos, setMisPedidos] = useState([]);
-
+    // al cargar el componente, hacemos la petición para obtener los pedidos
     useEffect(() => {
         const cargarMisPedidos = async () => {
             const datos = await getMisPedidos();

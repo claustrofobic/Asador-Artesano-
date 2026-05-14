@@ -4,7 +4,7 @@ import '../assets/css/pedidos.css';
 
 function MisFavoritos() {
     const [mis_favoritos, setFavoritos] = useState([]);
-
+    //al cargar el componente carga los favoritos
     useEffect(() => {
         const cargarMisFavoritos = async () =>{
             const datos = await getFavoritos();

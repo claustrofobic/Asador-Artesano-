@@ -4,7 +4,7 @@ import '../assets/css/pedidos.css';
 
 function AdminPedidos() {
     const [mis_pedidos, setMisPedidos] = useState([]);
-
+    // al cargar el componente, hacemos la petición para obtener los pedidos del admin
     useEffect(() => {
         const cargarMisPedidos = async () => {
             const datos = await getPedidosAdmin();
@@ -13,6 +13,8 @@ function AdminPedidos() {
         cargarMisPedidos();
     }, []);
 
+    // función para actualizar el estado de un pedido, manda al método el id del pedido 
+    // y el nuevo estado y recarga los pedidos
     const actualizarEstado = async (pedidoId, nuevoEstado) => {
         await updateEstadoPedido(pedidoId, nuevoEstado);
         const datos = await getPedidosAdmin();

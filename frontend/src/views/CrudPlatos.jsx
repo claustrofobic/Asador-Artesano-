@@ -10,15 +10,12 @@ function CrudPlatos() {
 
   const navigate = useNavigate();
 
-
-
+  // al cargar el componente, hacemos la petición para obtener los platos
   useEffect(() => {
     const cargarPlatos = async () => {
       const datos = await getPlatos();
       setCategorias(datos);
     };
-
-
     cargarPlatos();
 
   }, []);
@@ -58,7 +55,7 @@ function CrudPlatos() {
                   Editar
                 </button>
                 <button className="btn-eliminar" onClick={() => deletePlato(plato.id).then(() => {
-                  // Recargar la lista de platos después de eliminar
+                  // recargar la lista de platos después de eliminar
                   getPlatos().then(setCategorias);
                 })}>
                   Eliminar

@@ -7,6 +7,7 @@ use App\Models\Plato;
 class PedidoController extends Controller
 {
 
+//funcion que genera un pdf
 public function showPdf($id)
 {
     $pedido = Pedido::with(['items.plato', 'usuario'])->findOrFail($id);
@@ -146,6 +147,7 @@ public function showPdf($id)
     return response()->json($pedidos);
 }
 
+    //funcion que muestra los pedidos para el admin
     public function indexAdmin(){
         $pedidos = Pedido::query()
         ->with(['items.plato', 'usuario']) // carga los items, el plato de cada item y el usuario que hizo el pedido
@@ -154,14 +156,18 @@ public function showPdf($id)
         return response()->json($pedidos);
     }
 
+    //funcion para actualizar el estado de un pedido
     public function updateEstado($id, \Illuminate\Http\Request $request)
     {
+        //encuentra el pedido con ese id
         $pedido = Pedido::findOrFail($id);
+        //le pone el estado q se manda
         $pedido->estado = $request->estado;
         $pedido->save();
 
         return response()->json($pedido);
     }
+
     //funcion q crea un nuevo pedido
     public function store(\Illuminate\Http\Request $request)
 {
@@ -180,6 +186,7 @@ foreach ($request->items as $item) {
 ];
     }
 
+    //crea el pedido con esos datos, los q calcula y los q se mandan
     $pedido = Pedido::create([
     'usuario_id'     => auth()->id(),
     'total'          => $total,

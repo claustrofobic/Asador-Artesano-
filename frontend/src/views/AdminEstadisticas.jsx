@@ -3,7 +3,7 @@ import { getEstadisticas } from "../services/api";
 
 function AdminEstadisticas() {
     const [platos, setPlatos] = useState([]);
-
+    // al cargar el componente, hacemos la petición para obtener las estadísticas de ventas
     useEffect(() => {
         getEstadisticas().then(data => setPlatos(data));
     }, []);

@@ -25,10 +25,5 @@ class Pedido extends Model
     {
         return $this->hasMany(PedidoItem::class);
     }
-    /*// Obtener pedido con usuario e items
-        $pedido = Pedido::with(['usuario', 'items'])->find(1);
 
-     // Acceder a datos
-        echo $pedido->usuario->nombre;
-        echo $pedido->items[0]->precio_unitario; */
 }

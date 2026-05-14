@@ -17,7 +17,7 @@ function Inicio() {
                 <div className="hero-texto">
                     <p className="hero-subtitulo">Desde 2008 · Cocina familiar</p>
                     <h1>Hecho con fuego<br />y cariño</h1>
-                    <h2>Pide online, recoge sin esperas</h2>
+                    <h3>Pide online, recoge sin esperas</h3>
                     <p className="hero-descripcion">
                         Pollos asados, croquetas caseras, churros artesanales y chocolate a la taza.
                         Todo elaborado a mano, con ingredientes de calidad y una receta familiar

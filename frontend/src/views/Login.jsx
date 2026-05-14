@@ -4,6 +4,7 @@ import { login } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import '../assets/css/auth.css';
 
+// función para traducir los mensajes de error del backend a  español
 const traducirError = (msg) => {
   const map = {
     "validation.required":         "Este campo es obligatorio.",
@@ -17,6 +18,7 @@ const traducirError = (msg) => {
   return map[msg] ?? msg;
 };
 
+// componente para mostrar los errores de cada campo debajo del input correspondiente
 const MostrarErrores = ({ errores, campo }) =>
   errores[campo]?.length
     ? <ul className="errores-campo">
@@ -33,6 +35,7 @@ function Login() {
   const navigate          = useNavigate();
   const { iniciarSesion } = useAuth();
 
+  // función para manejar el submit del formulario de login, hace la petición al backend y maneja los errores que puedan surgir
   const iniciarSesionSubmit = async (e) => {
     e.preventDefault();
     setError("");

@@ -29,6 +29,7 @@ class User extends Authenticatable
         return $this->hasMany(Pedido::class, 'usuario_id');
     }
 
+    //relacion, un usuario puede tener muchos favoritos
     public function favoritos()
 {
     return $this->hasMany(Favorito::class, 'user_id');

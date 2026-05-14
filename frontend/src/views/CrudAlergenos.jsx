@@ -7,9 +7,9 @@ import "../assets/css/carta.css";
 function CrudAlergenos() {
   // Lista plana de alergenos, sin anidamiento
   const [alergenos, setAlergenos] = useState([]);
-
   const navigate = useNavigate();
 
+  // al cargar el componente, hacemos la petición para obtener los alergenos
   useEffect(() => {
     const cargarAlergenos = async () => {
       const datos = await getAlergenos();
@@ -34,7 +34,7 @@ function CrudAlergenos() {
               Editar
             </button>
             <button className="btn-eliminar" onClick={() => deleteAlergeno(alergeno.id).then(() => {
-              // Recargar la lista de alérgenos después de eliminar
+              // recargar la lista de alérgenos después de eliminar
               getAlergenos().then(setAlergenos);
             })}>
               Eliminar

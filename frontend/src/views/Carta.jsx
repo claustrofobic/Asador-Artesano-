@@ -13,6 +13,7 @@ function Carta() {
   const { token } = useAuth();
   const { añadirPlato } = useCarrito();
 
+  // al cargar el componente carga los platos y si estamos logueados, saca los favoritso
   useEffect(() => {
     const cargarPlatos = async () => {
       const datos = await getPlatos();
@@ -25,6 +26,7 @@ function Carta() {
     cargarPlatos();
   }, []);
 
+  //añade el plato al pedido, si no estás logueado te manda a login
   const setPedidoBtn = async (plato) => {
     if (token) {
       añadirPlato(plato);
@@ -33,8 +35,10 @@ function Carta() {
     }
   };
 
+  // función para saber si un plato es favorito, devuelve true si el plato está en favoritos
   const esFavorito = (platoId) => favoritos.some((f) => f.plato_id === platoId);
 
+  // función para añadir o eliminar un plato de favoritos, si ya es favorito lo elimina, sino lo añade
   const toggleFavorito = async (plato) => {
     if (esFavorito(plato.id)) {
       const fav = favoritos.find((f) => f.plato_id === plato.id);

@@ -27,11 +27,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout',      [LoginController::class, 'logout']);
     Route::get('/pedidos/{id}/pdf', [PedidoController::class, 'showPdf']);
 
-
+// ── Rutas de admin (requieren login y rol admin) ─────────────
     Route::middleware('es_admin')->group(function () {
+        // rutas de pedidos
         Route::get('/admin/pedidos',      [PedidoController::class,  'indexAdmin']);
         Route::put('/pedidos/{id}', [PedidoController::class,  'updateEstado']);
 
+        // rutas de platos
         Route::post('/admin/platos', [PlatoController::class, 'store']);
         Route::put('/admin/platos/{id}', [PlatoController::class, 'update']);
         Route::delete('/admin/platos/{id}', [PlatoController::class, 'destroy']);
@@ -39,11 +41,13 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/admin/alergenos', [AlergenosController::class, 'show']);
         Route::get('/admin/platos/{id}', [PlatoController::class, 'index']);
 
+        // rutas de alergenos
         Route::post('/admin/alergenos', [AlergenosController::class, 'store']);
         Route::put('/admin/alergenos/{id}', [AlergenosController::class, 'update']);
         Route::delete('/admin/alergenos/{id}', [AlergenosController::class, 'destroy']);
         Route::get('/admin/alergenos/{id}', [AlergenosController::class, 'index']);
 
+        //ruta de estadisticas
         Route::get('/admin/estadisticas', [EstadisticasController::class, 'ventasPorPlato']);
 
     });

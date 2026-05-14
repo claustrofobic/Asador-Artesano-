@@ -4,12 +4,14 @@ import Modal from "../components/Modal";
 import { getPlato, setPlato as crearPlato, updatePlato, getCategorias, getAlergenos } from "../services/api";
 
 function FormularioPlato() {
-
+    //trae el modal
     const [modal, setModal] = useState(null);
 
+    // obtener el id de la url para saber si es edicion o creación
     const { id } = useParams();
     const esEdicion = !!id;
 
+    // estado para el plato, inicialmente vacío, si es edición se carga con los datos del plato a editar
     const [plato, setPlato] = useState({
         nombre: "",
         descripcion: "",
@@ -20,15 +22,20 @@ function FormularioPlato() {
         alergenos: []
     });
 
+    // estado para la imagen
     const [imagenFile, setImagenFile] = useState(null);
     const [imagenPreview, setImagenPreview] = useState(null);
+    // estado para las categorias
     const [categorias, setCategorias] = useState([]);
+    //estado para los alergenos
     const [alergenos, setAlergenos] = useState([]);
 
+    //al cargar el componente hacemos la petición para obtener las categorias y los alergenos
     useEffect(() => {
         getCategorias().then(data => setCategorias(data));
         getAlergenos().then(data => setAlergenos(data));
 
+        // si es edicion carga los datos de ese plato
         if (esEdicion) {
             getPlato(id).then(data => {
                 setPlato(data);
@@ -39,6 +46,7 @@ function FormularioPlato() {
         }
     }, [id]);
 
+    //funcion para manejar los cambios en el formulario
     const handleChange = (e) => {
         const { name, value, type, checked, files } = e.target;
 
@@ -55,6 +63,7 @@ function FormularioPlato() {
         }
     };
 
+    //funcion q manda los datos del nuevo plato y así guardarlo
     const guardarPlato = async (e) => {
         e.preventDefault();
 
@@ -70,12 +79,15 @@ function FormularioPlato() {
         }
 
         try {
+            //si es edición en vez de como post se manda como put
             if (esEdicion) {
                 formData.append("_method", "PUT");
                 await updatePlato(id, formData);
             } else {
+                //sino, pues se crea
                 await crearPlato(formData);
             }
+            //ventana modal
             setModal(esEdicion ? "Plato actualizado correctamente." : "Plato creado correctamente.");
         } catch (error) {
             setModal("Ha ocurrido un error. Inténtalo de nuevo.");

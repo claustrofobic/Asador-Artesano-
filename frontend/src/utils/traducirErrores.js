@@ -1,5 +1,6 @@
-// src/utils/traducirErrores.js
+/
 
+//   para q los errores salgan en español
 const traducciones = {
   "validation.required": "Este campo es obligatorio.",
   "validation.email": "Debe ser un correo electrónico válido.",
