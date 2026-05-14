@@ -5,7 +5,7 @@ function QuienesSomos() {
         <div className="quienes-container">
 
             <section className="quienes-hero">
-                <h1>Pollos Asados Moraga</h1>
+                <h1>Asador Artesano</h1>
                 <p className="quienes-lema">Una historia familiar de fuego, tradición y buen hacer</p>
             </section>
 
@@ -49,22 +49,34 @@ function QuienesSomos() {
                 <h2>Lo que nos define</h2>
                 <div className="valores-grid">
                     <div className="valor-item">
-                        <span>🔥</span>
+                        <span><i
+                            className="fa-solid fa-fire-flame-curved"
+                            style={{ color: '#ff6b35' }}
+                        ></i></span>
                         <h3>Tradición</h3>
                         <p>Recetas familiares que no cambian porque no necesitan cambiar.</p>
                     </div>
                     <div className="valor-item">
-                        <span>🤲</span>
+                        <span><i
+                            className="fa-solid fa-hands"
+                            style={{ color: '#8b5e3c' }}
+                        ></i></span>
                         <h3>Artesanía</h3>
                         <p>Cada producto pasa por nuestras manos antes de llegar a las tuyas.</p>
                     </div>
                     <div className="valor-item">
-                        <span>🌿</span>
+                        <span><i
+                            className="fa-solid fa-leaf"
+                            style={{ color: '#5c9d4f' }}
+                        ></i></span>
                         <h3>Calidad</h3>
                         <p>Ingredientes seleccionados. Sin conservantes, sin artificios.</p>
                     </div>
                     <div className="valor-item">
-                        <span>❤️</span>
+                        <span><i
+                            className="fa-solid fa-heart"
+                            style={{ color: '#d64545' }}
+                        ></i></span>
                         <h3>Cercanía</h3>
                         <p>Somos un negocio de barrio y tratamos a cada cliente como en casa.</p>
                     </div>

@@ -1,50 +1,282 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
 
+/* ============================================================
+   VARIABLES
+   ============================================================ */
 :root {
-    --color-fondo: #f0ebe3;
-    --color-primario: #2c1810;
-    --color-secundario: #5c3d2e;
-    --color-acento: #2c1810;
-    --color-texto: #0e0705;
-    --color-texto-claro: #544034;
-    --color-crema: #faf7f2;
-    --color-borde: #e0d5c8;
-    --fuente-titulo: 'Playfair Display', serif;
-    --fuente-cuerpo: 'Crimson Text', serif;
-    --sombra: 0 2px 16px rgba(44, 24, 16, 0.08);
-    --radio: 12px;
+
+  /* --- Colores base (marrón/crema) --- */
+  --color-fondo:          #ede8e0;
+  --color-crema:          #faf7f2;
+  --color-crema-oscura:   #f0ebe1;
+  --color-primario:       #2c1810;
+  --color-primario-hover: #1a0e08;
+  --color-secundario:     #5c3d2e;
+  --color-texto:          #1a0e08;
+  --color-texto-medio:    #4a3428;
+  --color-texto-claro:    #7a5c50;
+  --color-borde:          #d6c9b8;
+  --color-borde-suave:    #e8dfd4;
+
+  /* --- Acentos (los nuevos) --- */
+  --color-dorado:         #c9973a;   /* ámbar cálido */
+  --color-dorado-claro:   #e8b96a;
+  --color-dorado-oscuro:  #9b7020;
+  --color-vino:           #7b2535;   /* burdeos profundo */
+  --color-vino-hover:     #5e1a28;
+  --color-terracota:      #b85c38;   /* terracota */
+  --color-terracota-hover:#923f22;
+  --color-verde-salvia:   #5a7055;   /* toque vegetal, p.ej. alérgenos */
+
+  /* --- Superficies / cards --- */
+  --color-card:           #ffffff;
+  --color-card-hover:     #fdf9f5;
+  --color-overlay:        rgba(26, 14, 8, 0.55);
+
+  /* --- Tipografías --- */
+  --fuente-titulo:  'Playfair Display', serif;
+  --fuente-cuerpo:  'Crimson Text', serif;
+
+  /* --- Escala tipográfica --- */
+  --text-xs:   0.78rem;
+  --text-sm:   0.9rem;
+  --text-base: 1.05rem;
+  --text-md:   1.2rem;
+  --text-lg:   1.45rem;
+  --text-xl:   1.8rem;
+  --text-2xl:  2.2rem;
+  --text-3xl:  2.8rem;
+
+  /* --- Sombras (3 niveles) --- */
+  --sombra-sm:  0 1px 4px rgba(44, 24, 16, 0.10);
+  --sombra:     0 4px 16px rgba(44, 24, 16, 0.13);
+  --sombra-md:  0 6px 24px rgba(44, 24, 16, 0.18);
+  --sombra-lg:  0 12px 40px rgba(44, 24, 16, 0.22);
+  --sombra-dorado: 0 4px 18px rgba(201, 151, 58, 0.30);
+
+  /* --- Gradientes --- */
+  --gradiente-hero:   linear-gradient(135deg, #2c1810 0%, #5c3d2e 60%, #7b2535 100%);
+  --gradiente-dorado: linear-gradient(135deg, var(--color-dorado-oscuro), var(--color-dorado));
+  --gradiente-crema:  linear-gradient(180deg, var(--color-crema) 0%, var(--color-fondo) 100%);
+
+  /* --- Radios --- */
+  --radio-sm: 6px;
+  --radio:    12px;
+  --radio-lg: 20px;
+  --radio-xl: 32px;
+
+  /* --- Transiciones --- */
+  --trans-rapida:  0.15s ease;
+  --trans-normal:  0.25s ease;
+  --trans-lenta:   0.4s ease;
+
+  /* --- Espaciados --- */
+  --espacio-xs:  0.4rem;
+  --espacio-sm:  0.75rem;
+  --espacio-md:  1.25rem;
+  --espacio-lg:  2rem;
+  --espacio-xl:  3rem;
+  --espacio-2xl: 5rem;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ============================================================
+   RESET
+   ============================================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
 body {
-    background-color: var(--color-fondo);
-    color: var(--color-texto);
-    font-family: var(--fuente-cuerpo);
-    font-size: 1.05rem;
-    padding-top: 80px;
-    min-height: 100vh;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--text-base);
+  line-height: 1.7;
+  padding-top: 80px;
+  min-height: 100vh;
 }
 
-h1, h2, h3 {
-    font-family: var(--fuente-titulo);
+/* ============================================================
+   TIPOGRAFÍA
+   ============================================================ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fuente-titulo);
+  line-height: 1.25;
+  color: var(--color-primario);
 }
 
+h1 { font-size: var(--text-3xl); font-weight: 700; }
+h2 { font-size: var(--text-2xl); font-weight: 600; }
+h3 { font-size: var(--text-xl);  font-weight: 600; }
+h4 { font-size: var(--text-lg);  font-weight: 600; }
+h5 { font-size: var(--text-md);  font-weight: 600; }
+h6 { font-size: var(--text-base);font-weight: 600; }
+
+p {
+  margin-bottom: var(--espacio-sm);
+  color: var(--color-texto-medio);
+}
+p:last-child { margin-bottom: 0; }
+
+/* ============================================================
+   ENLACES
+   ============================================================ */
 a {
-    color: var(--color-primario);
-    text-decoration: none;
-    transition: color 0.2s;
+  color: var(--color-dorado-oscuro);
+  text-decoration: none;
+  transition: color var(--trans-normal);
 }
-
 a:hover {
-    color: var(--color-secundario);
+  color: var(--color-dorado);
 }
 
+/* ============================================================
+   BOTONES BASE
+   ============================================================ */
 button {
-    cursor: pointer;
-    font-family: var(--fuente-cuerpo);
+  cursor: pointer;
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--text-base);
+  border: none;
+  border-radius: var(--radio);
+  transition: background-color var(--trans-normal),
+              box-shadow var(--trans-normal),
+              transform var(--trans-rapida);
+}
+button:active {
+  transform: scale(0.97);
+}
+
+/* Variantes de botón reutilizables */
+.btn-primario {
+  background: var(--gradiente-hero);
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radio);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: var(--sombra);
+}
+.btn-primario:hover {
+  box-shadow: var(--sombra-md);
+  filter: brightness(1.1);
+}
+
+.btn-dorado {
+  background: var(--gradiente-dorado);
+  color: var(--color-primario);
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--radio);
+  font-weight: 700;
+  box-shadow: var(--sombra-dorado);
+}
+.btn-dorado:hover {
+  filter: brightness(1.08);
+  box-shadow: 0 6px 22px rgba(201, 151, 58, 0.42);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--color-primario);
+  padding: 0.55rem 1.3rem;
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+.btn-outline:hover {
+  border-color: var(--color-dorado);
+  color: var(--color-dorado-oscuro);
+}
+
+.btn-peligro {
+  background-color: var(--color-vino);
+  color: #fff;
+  padding: 0.55rem 1.2rem;
+  border-radius: var(--radio);
+}
+.btn-peligro:hover {
+  background-color: var(--color-vino-hover);
+  box-shadow: var(--sombra-md);
+}
+
+/* ============================================================
+   FORMULARIOS BASE
+   ============================================================ */
+input, select, textarea {
+  font-family: var(--fuente-cuerpo);
+  font-size: var(--text-base);
+  background-color: var(--color-crema);
+  color: var(--color-texto);
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radio-sm);
+  padding: 0.55rem 0.9rem;
+  transition: border-color var(--trans-normal), box-shadow var(--trans-normal);
+  width: 100%;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-dorado);
+  box-shadow: 0 0 0 3px rgba(201, 151, 58, 0.18);
+}
+input::placeholder, textarea::placeholder {
+  color: var(--color-texto-claro);
+  opacity: 0.7;
+}
+
+/* ============================================================
+   CARDS BASE
+   ============================================================ */
+.card {
+  background: var(--color-card);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  border: 1px solid var(--color-borde-suave);
+  transition: box-shadow var(--trans-normal), transform var(--trans-normal);
+}
+.card:hover {
+  box-shadow: var(--sombra-md);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   UTILIDADES BÁSICAS
+   ============================================================ */
+.texto-dorado   { color: var(--color-dorado); }
+.texto-vino     { color: var(--color-vino); }
+.texto-terracota{ color: var(--color-terracota); }
+.texto-claro    { color: var(--color-texto-claro); }
+.texto-titulo   { font-family: var(--fuente-titulo); }
+
+.fondo-oscuro {
+  background: var(--gradiente-hero);
+  color: var(--color-crema);
+}
+.fondo-oscuro h1,
+.fondo-oscuro h2,
+.fondo-oscuro h3 {
+  color: var(--color-dorado-claro);
+}
+
+.separador {
+  border: none;
+  border-top: 2px solid var(--color-borde);
+  margin: var(--espacio-lg) 0;
+}
+.separador-dorado {
+  border-color: var(--color-dorado);
+  opacity: 0.5;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }

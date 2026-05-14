@@ -1,127 +1,189 @@
 .carta-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 40px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
 }
 
 .carta-container h1 {
-    font-size: 2.8rem;
-    color: var(--color-texto);
-    text-align: center;
-    margin-bottom: 20px;
-    font-style: italic;
+  font-size: 2.8rem;
+  text-align: center;
+  font-style: italic;
+  background: var(--gradiente-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 12px;
 }
 
+/* subtítulo decorativo bajo el h1 */
+.carta-container h1 + p,
+.carta-subtitulo {
+  text-align: center;
+  color: var(--color-dorado-oscuro);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 32px;
+}
+
+/* ---- botón favoritos ---- */
 .btn-favoritos {
-    display: block;
-    margin: 0 auto 40px auto;
-    background: transparent;
-    color: var(--color-primario);
-    border: 1.5px solid var(--color-primario);
-    padding: 0.5rem 1.4rem;
-    border-radius: var(--radio);
-    font-size: 1rem;
-    font-family: var(--fuente-cuerpo);
-    transition: background 0.2s, color 0.2s;
+  display: block;
+  margin: 0 auto 48px;
+  background: transparent;
+  color: var(--color-dorado-oscuro);
+  border: 1.5px solid var(--color-dorado);
+  padding: 0.55rem 1.6rem;
+  border-radius: var(--radio);
+  font-size: var(--text-base);
+  font-family: var(--fuente-cuerpo);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: background var(--trans-normal), color var(--trans-normal),
+              box-shadow var(--trans-normal);
 }
-
 .btn-favoritos:hover {
-    background: var(--color-primario);
-    color: var(--color-crema);
+  background: var(--gradiente-dorado);
+  color: var(--color-primario);
+  box-shadow: var(--sombra-dorado);
 }
 
+/* ---- secciones de categoría ---- */
 .categoria-seccion {
-    margin-bottom: 50px;
+  margin-bottom: 56px;
 }
 
 .categoria-seccion h2 {
-    font-size: 1.5rem;
-    color: var(--color-texto-claro);
-    border-bottom: 1px solid var(--color-borde);
-    padding-bottom: 10px;
-    margin-bottom: 25px;
-    font-style: italic;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--color-primario);
+  padding-bottom: 10px;
+  margin-bottom: 28px;
+  border-bottom: 2px solid transparent;
+  border-image: var(--gradiente-dorado) 1;
 }
 
+/* ---- grid de platos ---- */
 .platos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 22px;
 }
 
+/* ---- tarjeta plato ---- */
 .tarjeta-plato {
-    background: var(--color-crema);
-    border: 1px solid var(--color-borde);
-    border-radius: var(--radio);
-    padding: 24px;
-    box-shadow: var(--sombra);
-    transition: transform 0.2s, box-shadow 0.2s;
-    display: flex;
-    flex-direction: column;
+  background: var(--color-card);
+  border: 1px solid var(--color-borde-suave);
+  border-radius: var(--radio);
+  padding: 0;           /* imagen al borde */
+  box-shadow: var(--sombra);
+  transition: transform var(--trans-normal), box-shadow var(--trans-normal),
+              border-color var(--trans-normal);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+.tarjeta-plato::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradiente-dorado);
+  opacity: 0;
+  transition: opacity var(--trans-normal);
+}
+.tarjeta-plato:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sombra-lg);
+  border-color: var(--color-dorado);
+}
+.tarjeta-plato:hover::after {
+  opacity: 1;
 }
 
-.tarjeta-plato:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(44, 24, 16, 0.12);
+.plato-imagen {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-borde-suave);
+}
+
+/* contenido dentro de la tarjeta */
+.tarjeta-plato-cuerpo {
+  padding: 20px 20px 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .tarjeta-plato h3 {
-    font-size: 1.2rem;
-    color: var(--color-texto);
-    margin-bottom: 8px;
+  font-size: 1.2rem;
+  color: var(--color-primario);
+  margin-bottom: 8px;
 }
 
 .tarjeta-plato p {
-    color: var(--color-texto-claro);
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 12px;
+  color: var(--color-texto-medio);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  margin-bottom: 12px;
 }
 
 .precio {
-    font-size: 1.2rem !important;
-    font-weight: 600;
-    color: var(--color-texto) !important;
-    font-family: var(--fuente-titulo);
-    margin-top: auto;
-    margin-bottom: 12px !important;
+  font-size: 1.2rem !important;
+  font-weight: 700;
+  color: var(--color-dorado-oscuro) !important;
+  font-family: var(--fuente-titulo);
+  margin-bottom: 14px !important;
 }
 
+/* ---- acciones tarjeta ---- */
 .tarjeta-plato-acciones {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding: 0 20px 20px;
 }
 
 .btn-favorito {
-    background: transparent;
-    border: 1.5px solid var(--color-borde);
-    border-radius: var(--radio);
-    padding: 8px 12px;
-    font-size: 1rem;
-    transition: border-color 0.2s, background 0.2s;
-    flex-shrink: 0;
+  background: transparent;
+  border: 1.5px solid var(--color-borde);
+  border-radius: var(--radio);
+  padding: 8px 12px;
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: border-color var(--trans-normal), background var(--trans-normal),
+              transform var(--trans-rapida);
 }
-
 .btn-favorito:hover {
-    border-color: rgb(157, 13, 0);
-    background: rgba(157, 13, 0, 0.06);
+  border-color: var(--color-vino);
+  background: rgba(123, 37, 53, 0.07);
+  transform: scale(1.1);
+}
+.btn-favorito.activo {
+  border-color: var(--color-vino);
+  background: rgba(123, 37, 53, 0.1);
 }
 
 .btn-pedido {
-    flex: 1;
-    background: var(--color-primario);
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: var(--radio);
-    font-size: 0.95rem;
-    font-family: var(--fuente-cuerpo);
-    transition: all 0.2s;
+  flex: 1;
+  background: var(--gradiente-hero);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: var(--radio);
+  font-size: var(--text-sm);
+  font-family: var(--fuente-cuerpo);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  box-shadow: var(--sombra-sm);
+  transition: filter var(--trans-normal), transform var(--trans-rapida),
+              box-shadow var(--trans-normal);
 }
-
 .btn-pedido:hover {
-    background: var(--color-secundario);
-    transform: translateY(-1px);
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+  box-shadow: var(--sombra-md);
 }

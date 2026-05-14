@@ -1,123 +1,196 @@
 .quienes-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 40px 20px 80px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px 100px;
 }
 
+/* ── Hero ── */
 .quienes-hero {
-    text-align: center;
-    padding: 50px 0 60px;
-    border-bottom: 1px solid var(--color-borde);
-    margin-bottom: 60px;
+  text-align: center;
+  padding: 60px 0 70px;
+  border-bottom: 1px solid var(--color-borde-suave);
+  margin-bottom: 70px;
+  position: relative;
+}
+
+.quienes-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 50%;
+  transform: translateX(-50%);
+  width: 80px; height: 3px;
+  background: var(--gradiente-dorado);
+  border-radius: 2px;
 }
 
 .quienes-hero h1 {
-    font-size: 3rem;
-    font-style: italic;
-    margin-bottom: 14px;
+  font-size: 3rem;
+  font-style: italic;
+  background: var(--gradiente-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
 }
 
 .quienes-lema {
-    color: var(--color-texto-claro);
-    font-size: 1.1rem;
-    font-style: italic;
+  color: var(--color-texto-claro);
+  font-size: 1.1rem;
+  font-style: italic;
+  letter-spacing: .02em;
 }
 
-/* Historia */
+/* ── Historia ── */
 .quienes-historia {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 60px;
-    align-items: start;
-    margin-bottom: 70px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 60px;
+  align-items: start;
+  margin-bottom: 80px;
 }
 
 .historia-texto h2 {
-    font-size: 1.8rem;
-    font-style: italic;
-    margin-bottom: 20px;
+  font-size: 1.8rem;
+  font-style: italic;
+  color: var(--color-primario);
+  margin-bottom: 20px;
 }
 
 .historia-texto p {
-    color: var(--color-texto-claro);
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 16px;
+  color: var(--color-texto-claro);
+  font-size: 1.05rem;
+  line-height: 1.85;
+  margin-bottom: 18px;
 }
 
+/* ── Datos (sidebar) ── */
 .historia-datos {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .dato {
-    background: var(--color-crema);
-    border: 1px solid var(--color-borde);
-    border-radius: var(--radio);
-    padding: 20px;
-    text-align: center;
-    box-shadow: var(--sombra);
+  text-align: center;
+  background: var(--color-card);
+  border: 1px solid var(--color-borde-suave);
+  border-radius: var(--radio-lg);
+  padding: 22px 16px;
+  box-shadow: var(--sombra-lg);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--trans-normal);
+}
+
+.dato::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradiente-dorado);
+}
+
+.dato:hover {
+  transform: translateY(-2px);
 }
 
 .dato-numero {
-    display: block;
-    font-family: var(--fuente-titulo);
-    font-size: 2.2rem;
-    color: var(--color-primario);
-    font-weight: 700;
+  display: block;
+  font-family: var(--fuente-titulo);
+  font-size: 2.4rem;
+  font-weight: 700;
+  background: var(--gradiente-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+  margin-bottom: 6px;
 }
 
 .dato-label {
-    font-size: 0.85rem;
-    color: var(--color-texto-claro);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--color-texto-claro);
 }
 
-/* Valores */
+/* ── Valores ── */
 .quienes-valores {
-    text-align: center;
+  text-align: center;
 }
 
 .quienes-valores h2 {
-    font-size: 2rem;
-    font-style: italic;
-    margin-bottom: 36px;
+  font-size: 2rem;
+  font-style: italic;
+  background: var(--gradiente-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 40px;
 }
 
 .valores-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 .valor-item {
-    background: var(--color-crema);
-    border: 1px solid var(--color-borde);
-    border-radius: var(--radio);
-    padding: 24px 16px;
-    box-shadow: var(--sombra);
-    transition: transform 0.2s;
+  background: var(--color-card);
+  border: 1px solid var(--color-borde-suave);
+  border-radius: var(--radio-lg);
+  padding: 28px 16px;
+  box-shadow: var(--sombra-lg);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--trans-normal), box-shadow var(--trans-normal);
+}
+
+.valor-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--gradiente-dorado);
+  transform: scaleX(0);
+  transition: transform var(--trans-normal);
+  transform-origin: left;
 }
 
 .valor-item:hover {
-    transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.1);
+}
+
+.valor-item:hover::after {
+  transform: scaleX(1);
 }
 
 .valor-item span {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 12px;
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 14px;
 }
 
 .valor-item h3 {
-    font-size: 1.1rem;
-    margin-bottom: 8px;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--color-primario);
+  margin-bottom: 8px;
 }
 
 .valor-item p {
-    color: var(--color-texto-claro);
-    font-size: 0.9rem;
-    line-height: 1.6;
+  font-size: var(--text-sm);
+  color: var(--color-texto-claro);
+  line-height: 1.65;
+}
+
+@media (max-width: 768px) {
+  .quienes-historia {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .valores-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

@@ -18,13 +18,17 @@ import AdminPedidos from "./views/AdminPedidos";
 import AdminEstadisticas from "./views/AdminEstadisticas";
 import FormularioPlato from "./views/FormularioPlato";
 import FormularioAlergenos from "./views/FormularioAlergenos";
+import NavbarAdmin from "./components/NavbarAdmin";
+import Footer from "./components/Footer";
 import { useAuth } from "./context/AuthContext";
 
 
 
 function App() {
 
-  const { usuario } = useAuth();
+  const { usuario, cargando } = useAuth(); // 1. saca cargando del contexto
+
+  if (cargando) return null
   
   if (usuario?.rol !== 'admin') {
     return (
@@ -41,21 +45,17 @@ function App() {
           <Route path="/mis-pedidos" element={<RutaProtegida><MisPedidos /></RutaProtegida>} />
           <Route path="/favoritos" element={<RutaProtegida><MisFavoritos /></RutaProtegida>} />
         </Routes>
+        <Footer />
+        
       </>
     );
   } else {
     return (
       <>
-      <Navbar />
+      <NavbarAdmin />
         <AdminLayout>
         <Routes>
           <Route path="/" element={<Inicio />} />
-          <Route path="/carta" element={<Carta />} />
-          <Route path="/quienes-somos" element={<QuienesSomos />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/registro" element={<Registro />} />
-          <Route path="/mis-pedidos" element={<RutaProtegida><MisPedidos /></RutaProtegida>} />
-          <Route path="/favoritos" element={<RutaProtegida><MisFavoritos /></RutaProtegida>} />
 
           <Route path="/admin" element={<RutaAdmin><Admin /></RutaAdmin>} />
           <Route path="/admin/pedidos" element={<RutaAdmin><AdminPedidos /></RutaAdmin>} />

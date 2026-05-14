@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getPlatos, updatePlato, deletePlato, setPlato } from "../services/api";
+import { getPlatos, deletePlato } from "../services/api";
 import { useNavigate } from "react-router-dom";
 
 
@@ -40,6 +40,13 @@ function CrudPlatos() {
             {categoria.platos.map((plato) => (
               <div key={plato.id} className="tarjeta-plato">
                 <h3>{plato.nombre}</h3>
+                {plato.imagen_url && (
+                  <img
+                    src={`${import.meta.env.VITE_API_URL}/storage/${plato.imagen_url}`}
+                    alt={plato.nombre}
+                    className="plato-imagen"
+                  />
+                )}
                 <p>{plato.descripcion}</p>
                 {plato.alergenos.length > 0 && (
                   <p className="alergenos">

@@ -6,30 +6,34 @@ const API_URL = "http://localhost:8000/api";
 const request = async (endpoint, options = {}) => {
   const token = localStorage.getItem("token");
 
-  // se va a mandar un json
   const headers = {
     "Content-Type": "application/json",
     Accept: "application/json",
   };
 
-  // si hay token lo añadimos
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   }
-  //se manda el url + endpoint con sus opciones y sus headers (con token, o null)
+
   const response = await fetch(`${API_URL}${endpoint}`, {
     headers: headers,
     ...options,
   });
 
-  if (
-    response.status === 204 ||
-    response.headers.get("content-length") === "0"
-  ) {
+  if (response.status === 204 || response.headers.get("content-length") === "0") {
     return null;
   }
 
-  return response.json();
+  const data = await response.json();
+
+  // Si la respuesta no es ok (4xx, 5xx), lanzamos el error con los datos
+  if (!response.ok) {
+    const error = new Error(data?.message ?? "Error en la petición");
+    error.response = { data, status: response.status };
+    throw error;
+  }
+
+  return data;
 };
 
 /* ===============
@@ -70,11 +74,18 @@ export const setFavorito = (platoId) =>
     body: JSON.stringify({ plato_id: platoId }),
   });
 
-export const setPlato = (datos) =>
-  request("/admin/platos", {
-    method: "POST",
-    body: JSON.stringify(datos),
-  });
+export const setPlato = (datos) => {
+    const token = localStorage.getItem("token");
+    return fetch(`${API_URL}/admin/platos`, {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json",
+            // sin Content-Type, el browser lo pone solo con el boundary correcto
+        },
+        body: datos, // FormData directo, sin JSON.stringify
+    }).then(res => res.json());
+};
 
 export const setAlergeno = (datos) =>
   request("/admin/alergenos", {
@@ -157,11 +168,17 @@ export const updateEstadoPedido = (id, estado) =>
     body: JSON.stringify({ estado }),
   });
 
-export const updatePlato = (id, datos) =>
-  request(`/admin/platos/${id}`, {
-    method: "PUT",
-    body: JSON.stringify(datos),
-  });
+export const updatePlato = (id, datos) => {
+    const token = localStorage.getItem("token");
+    return fetch(`${API_URL}/admin/platos/${id}`, {
+        method: "POST", // POST con _method=PUT porque Laravel no lee FormData en PUT
+        headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/json",
+        },
+        body: datos, // FormData directo
+    }).then(res => res.json());
+};
 
 export const updateAlergeno = (id, datos) =>
   request(`/admin/alergenos/${id}`, {

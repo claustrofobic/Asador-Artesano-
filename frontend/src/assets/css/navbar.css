@@ -1,59 +1,69 @@
 #cabeceraContainer {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background: var(--color-crema);
-    border-bottom: 1px solid var(--color-borde);
-    box-shadow: 0 2px 12px rgba(44, 24, 16, 0.06);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: var(--color-primario);
+  border-bottom: 3px solid var(--color-dorado);
+  box-shadow: 0 4px 20px rgba(26, 14, 8, 0.40);
 }
 
 nav {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: 0 40px;
-    height: 75px;
-    max-width: 1200px;
-    margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 40px;
+  height: 75px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 nav img {
-    height: 44px;
-    margin-right: 24px;
+  height: 44px;
+  margin-right: 28px;
+  filter: brightness(0) invert(1); /* logo blanco sobre fondo oscuro */
 }
 
+/* ---- enlaces ---- */
 .cabecera-item a {
-    color: var(--color-texto);
-    font-family: var(--fuente-cuerpo);
-    font-size: 1rem;
-    padding: 8px 14px;
-    border-radius: var(--radio);
-    transition: all 0.2s;
+  font-size: var(--text-base);
+  font-family: var(--fuente-cuerpo);
+  color: var(--color-crema);
+  padding: 8px 14px;
+  border-radius: var(--radio-sm);
+  letter-spacing: 0.03em;
+  transition: color var(--trans-normal), background var(--trans-normal);
 }
-
 .cabecera-item a:hover {
-    color: var(--color-secundario);
-    background: var(--color-fondo);
+  color: var(--color-dorado-claro);
+  background: rgba(201, 151, 58, 0.12);
+}
+.cabecera-item a.activo {
+  color: var(--color-dorado);
+  font-weight: 600;
 }
 
+/* ---- botón CTA navbar ---- */
 nav button {
-    background: var(--color-primario);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: var(--radio);
-    font-size: 1rem;
-    font-family: var(--fuente-cuerpo);
-    transition: all 0.2s;
-    margin-left: 4px;
+  cursor: pointer;
+  font-size: var(--text-base);
+  font-family: var(--fuente-cuerpo);
+  background: var(--gradiente-dorado);
+  color: var(--color-primario) !important;
+  border: none;
+  padding: 9px 20px;
+  border-radius: var(--radio);
+  margin-left: 8px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  box-shadow: var(--sombra-dorado);
+  transition: filter var(--trans-normal), transform var(--trans-rapida), box-shadow var(--trans-normal);
 }
-
 nav button a {
-    color: white !important;
+  color: var(--color-primario) !important;
 }
-
 nav button:hover {
-    background: var(--color-secundario);
-    transform: translateY(-1px);
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(201, 151, 58, 0.45);
 }

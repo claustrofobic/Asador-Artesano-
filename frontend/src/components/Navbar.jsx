@@ -31,7 +31,7 @@ function Navbar() {
             <Link to="/carta">Carta</Link>
             </div>
             <div className="cabecera-item">
-            <button>
+            <button className="cabecera-item">
                 {token ? (
                     <Link to="/carta"> Haz tu pedido</Link>
                 ) : (

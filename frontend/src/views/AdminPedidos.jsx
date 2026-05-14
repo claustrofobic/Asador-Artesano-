@@ -33,7 +33,7 @@ function AdminPedidos() {
                             Descargar detalles del pedido
                         </button>
                         <p>Cliente: {pedido.usuario.nombre}</p>
-                        <p className="estado-badge">Estado: {pedido.estado}</p>
+                        
                         {pedido.estado === 'pendiente' ? (<button className="btn-accion" onClick={() => actualizarEstado(pedido.id, 'recibido')}>Marcar como Recibido</button>) : (<span className="badge-recibido">PEDIDO YA RECIBIDO</span>)}
                         <p>Fecha: {new Date(pedido.created_at).toLocaleDateString('es-ES')}</p>
                         <p>Total: {pedido.total} €</p>

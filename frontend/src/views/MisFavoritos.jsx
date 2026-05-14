@@ -22,14 +22,16 @@ function MisFavoritos() {
                 mis_favoritos.map(favorito => (
                     <div key={favorito.id} className="tarjeta-favorito">
                         <h2>{favorito.plato.nombre}</h2>
+                        {favorito.plato.imagen_url && (
+                  <img
+                    src={`${import.meta.env.VITE_API_URL}/storage/${favorito.plato.imagen_url}`}
+                    alt={favorito.plato.nombre}
+                    className="plato-imagen"
+                  />
+                )}
                         <p>{favorito.plato.descripcion}</p>
                         <p className="precio">{favorito.plato.precio} €</p>
                         
-                    {favorito.plato.imagen_url ?
-                        <img src={favorito.plato.imagen_url} alt={favorito.plato.nombre} />
-                    :
-                        <p>No hay imagen disponible</p>
-                    }
                     </div>
                 ))
             )}

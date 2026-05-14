@@ -22,14 +22,12 @@ function Carta() {
         setFavoritos(favs);
       }
     };
-
     cargarPlatos();
   }, []);
 
   const setPedidoBtn = async (plato) => {
     if (token) {
       añadirPlato(plato);
-      alert(`${plato.nombre} añadido al carrito`);
     } else {
       navigate("/login");
     }
@@ -62,6 +60,13 @@ function Carta() {
           <div className="platos-grid">
             {categoria.platos.map((plato) => (
               <div key={plato.id} className="tarjeta-plato">
+                {plato.imagen_url && (
+                  <img
+                    src={`${import.meta.env.VITE_API_URL}/storage/${plato.imagen_url}`}
+                    alt={plato.nombre}
+                    className="plato-imagen"
+                  />
+                )}
                 <h3>{plato.nombre}</h3>
                 <p>{plato.descripcion}</p>
                 {plato.alergenos.length > 0 && (
@@ -70,27 +75,20 @@ function Carta() {
                   </p>
                 )}
                 <p className="precio">{plato.precio} €</p>
-                {token && (
-                  <button onClick={() => toggleFavorito(plato)}>
-                    {esFavorito(plato.id) ? (
-                      <i
-                        className="fa-solid fa-heart"
-                        style={{ color: "rgb(157, 13, 0)" }}
-                      ></i>
-                    ) : (
-                      <i
-                        className="fa-regular fa-heart"
-                        style={{ color: "rgb(157, 13, 0)" }}
-                      ></i>
-                    )}
+                <div className="tarjeta-plato-acciones">
+                  {token && (
+                    <button className="btn-favorito" onClick={() => toggleFavorito(plato)}>
+                      {esFavorito(plato.id) ? (
+                        <i className="fa-solid fa-heart" style={{ color: "rgb(157, 13, 0)" }}></i>
+                      ) : (
+                        <i className="fa-regular fa-heart" style={{ color: "rgb(157, 13, 0)" }}></i>
+                      )}
+                    </button>
+                  )}
+                  <button className="btn-pedido" onClick={() => setPedidoBtn(plato)}>
+                    {token ? "Añadir al pedido" : "¡Pide ya!"}
                   </button>
-                )}
-                <button
-                  className="btn-pedido"
-                  onClick={() => setPedidoBtn(plato)}
-                >
-                  {token ? "Añadir al pedido" : "¡Pide ya!"}
-                </button>
+                </div>
               </div>
             ))}
           </div>
