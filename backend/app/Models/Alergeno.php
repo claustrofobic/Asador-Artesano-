@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;//HACER
 class Alergeno extends Model
 {
     //va a usar la tabla Alergenos
-    protected $table = 'Alergenos';
+    protected $table = 'alergenos';
     //para que no use la columna de created at
     public $timestamps = false;
 
