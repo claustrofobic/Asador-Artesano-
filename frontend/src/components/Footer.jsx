@@ -17,13 +17,14 @@ export default function Footer() {
           <FooterLink to="/carta">Carta</FooterLink>
           <FooterLink to="/quienes-somos">Quiénes somos</FooterLink>
         </FooterCol>
-
+        
+        {/* 
         <FooterCol title="Mi cuenta">
           <FooterLink to="/login">Iniciar sesión</FooterLink>
           <FooterLink to="/registro">Registrarse</FooterLink>
           <FooterLink to="/pedidos">Mis pedidos</FooterLink>
           <FooterLink to="/favoritos">Favoritos</FooterLink>
-        </FooterCol>
+        </FooterCol>*/}
 
         <FooterCol title="Contacto">
           <li className="footer-contact-item"> Calle Las Cañadillas 1, Tarazona de la Mancha</li>
