@@ -1,5 +1,5 @@
 // URL base de la API de Laravel
-const API_URL = "http://localhost:8000/api";
+const API_URL = import.meta.env.VITE_API_URL + "/api";
 
 // función para hacer las peticiones a la API
 //endpoint-> la del url después de /api
