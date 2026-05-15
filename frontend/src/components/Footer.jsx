@@ -1,21 +1,41 @@
 // components/Footer.jsx
 import { Link } from 'react-router-dom';
+import '../assets/css/footer.css';
 
 export default function Footer() {
   return (
-    <footer style={{
-      background: '#3d2010',
-      color: '#f5ede0',
-      fontFamily: "'Crimson Text', serif",
-      padding: '2.5rem 2rem 1.2rem',
-    }}>
-      
+    <footer className="footer">
+      <div className="footer-grid">
+        <FooterCol title="Asador Artesano">
+          <li className="footer-brand-desc">
+            Cocina de calidad, 100% artesanal
+          </li>
+        </FooterCol>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem' }}>
-        <span style={{ fontSize: '0.82rem', color: 'rgba(245,237,224,0.45)', fontStyle: 'italic' }}>
+        <FooterCol title="Navegar">
+          <FooterLink to="/">Inicio</FooterLink>
+          <FooterLink to="/carta">Carta</FooterLink>
+          <FooterLink to="/quienes-somos">Quiénes somos</FooterLink>
+        </FooterCol>
+
+        <FooterCol title="Mi cuenta">
+          <FooterLink to="/login">Iniciar sesión</FooterLink>
+          <FooterLink to="/registro">Registrarse</FooterLink>
+          <FooterLink to="/pedidos">Mis pedidos</FooterLink>
+          <FooterLink to="/favoritos">Favoritos</FooterLink>
+        </FooterCol>
+
+        <FooterCol title="Contacto">
+          <li className="footer-contact-item"> Calle Las Cañadillas 1, Tarazona de la Mancha</li>
+          <li className="footer-contact-item"> +34 606 38 09 40</li>
+        </FooterCol>
+      </div>
+
+      <div className="footer-bottom">
+        <span className="footer-copy">
           © {new Date().getFullYear()} Asador Artesano · Todos los derechos reservados
         </span>
-        <span style={{ fontSize: '0.78rem', color: 'rgba(245,237,224,0.35)', letterSpacing: '0.05em' }}>
+        <span className="footer-dev">
           Desarrollado por Claudia Moraga Cruz
         </span>
       </div>
@@ -25,34 +45,17 @@ export default function Footer() {
 
 function FooterCol({ title, children }) {
   return (
-    <div>
-      <h4 style={{
-        fontFamily: "'Playfair Display', serif",
-        fontSize: '0.85rem',
-        fontWeight: 600,
-        color: '#c8a06a',
-        letterSpacing: '0.1em',
-        textTransform: 'uppercase',
-        margin: '0 0 0.7rem',
-      }}>
-        {title}
-      </h4>
-      <ul style={{ listStyle: 'none', margin: 0, padding: 0 }}>
-        {children}
-      </ul>
+    <div className="footer-col">
+      <h4 className="footer-col-title">{title}</h4>
+      <ul className="footer-col-list">{children}</ul>
     </div>
   );
 }
 
 function FooterLink({ to, children }) {
   return (
-    <li style={{ marginBottom: '0.35rem' }}>
-      <Link to={to} style={{ color: 'rgba(245,237,224,0.75)', fontSize: '0.95rem', textDecoration: 'none' }}
-        onMouseEnter={e => e.target.style.color = '#f5ede0'}
-        onMouseLeave={e => e.target.style.color = 'rgba(245,237,224,0.75)'}
-      >
-        {children}
-      </Link>
+    <li>
+      <Link to={to} className="footer-link">{children}</Link>
     </li>
   );
 }

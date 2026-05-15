@@ -94,7 +94,7 @@ function Inicio() {
                     <div className="por-que-item">
                         <span><i
                             className="fa-solid fa-heart"
-                            style={{ color: 'rgb(80, 55, 30)' }}
+                            style={{ color: 'rgb(255, 255, 255)' }}
                         ></i></span>
                         <h4>Todo a mano</h4>
                         <p>Cada producto se elabora manualmente, sin atajos ni ingredientes procesados.</p>
@@ -102,7 +102,7 @@ function Inicio() {
                     <div className="por-que-item">
                         <span><i
                             className="fa-solid fa-users"
-                            style={{ color: 'rgb(80, 55, 30)' }}
+                            style={{ color: 'rgb(255, 255, 255)' }}
                         ></i></span>
                         <h4>Empresa familiar</h4>
                         <p>Somos un matrimonio que lleva más de 16 años volcado en este oficio con pasión.</p>
@@ -110,7 +110,7 @@ function Inicio() {
                     <div className="por-que-item">
                         <span><i
                             className="fa-solid fa-leaf"
-                            style={{ color: 'rgb(80, 55, 30)' }}
+                            style={{ color: 'rgb(255, 255, 255)' }}
                         ></i></span>
                         <h4>Ingredientes de calidad</h4>
                         <p>Seleccionamos los mejores ingredientes para que cada bocado valga la pena.</p>

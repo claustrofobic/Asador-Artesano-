@@ -3,7 +3,7 @@
   top: 0;
   width: 100%;
   z-index: 1000;
-  background: var(--color-primario);
+  background: var(--color-crema);
   border-bottom: 3px solid var(--color-dorado);
   box-shadow: 0 4px 20px rgba(26, 14, 8, 0.40);
 }
@@ -21,14 +21,14 @@ nav {
 nav img {
   height: 44px;
   margin-right: 28px;
-  filter: brightness(0) invert(1); /* logo blanco sobre fondo oscuro */
+  /*filter: brightness(0) invert(1); /* logo blanco sobre fondo oscuro */
 }
 
 /* ---- enlaces ---- */
 .cabecera-item a {
   font-size: var(--text-base);
   font-family: var(--fuente-cuerpo);
-  color: var(--color-crema);
+  color: var(--color-primario);
   padding: 8px 14px;
   border-radius: var(--radio-sm);
   letter-spacing: 0.03em;

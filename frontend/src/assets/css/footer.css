@@ -1,0 +1,119 @@
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+.footer {
+  background: var(--color-primario);
+  color: var(--color-crema);
+  font-family: var(--fuente-cuerpo);
+  padding: 3rem 2.5rem 1.4rem;
+  position: relative;
+}
+
+/* Línea dorada arriba, igual que las tarjetas */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--gradiente-dorado);
+}
+
+/* ── Grid de columnas ── */
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(245, 237, 224, 0.12);
+  margin-bottom: 1.5rem;
+}
+
+/* ── Columna ── */
+.footer-col-title {
+  font-family: var(--fuente-titulo);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-dorado);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin: 0 0 .85rem;
+}
+
+.footer-col-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+
+.footer-brand-desc {
+  font-size: 16px;
+  color: rgba(245, 237, 224, .65);
+  line-height: 1.7;
+  font-style: italic;
+  list-style: none;
+}
+
+.footer-contact-item {
+  font-size: 16px;
+  color: rgba(245, 237, 224, .65);
+  line-height: 1.8;
+  list-style: none;
+}
+
+/* ── Links ── */
+.footer-link {
+  color: rgba(245, 237, 224, .7);
+  font-size: 16px;
+  text-decoration: none;
+  transition: color var(--trans-normal), padding-left var(--trans-normal);
+  display: inline-block;
+}
+
+.footer-link:hover {
+  color: var(--color-dorado);
+  padding-left: 4px;
+}
+
+/* ── Franja inferior ── */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+
+.footer-copy {
+  font-size: 14px;
+  color: rgba(245, 237, 224, .4);
+  font-style: italic;
+}
+
+.footer-dev {
+  font-size: 14px;
+  color: rgba(245, 237, 224, .3);
+  letter-spacing: .05em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .3rem;
+  }
+}
