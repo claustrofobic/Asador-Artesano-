@@ -24,7 +24,7 @@ function MisFavoritos() {
             <div key={favorito.id} className="tarjeta-favorito">
               {favorito.plato.imagen_url && (
                 <img
-                  src={`${import.meta.env.VITE_API_URL}/storage${favorito.plato.imagen_url}`}
+                  src={`${import.meta.env.VITE_API_URL}/storage/${favorito.plato.imagen_url}`}
                   alt={favorito.plato.nombre}
                   className="plato-imagen"
                 />
