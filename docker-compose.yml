@@ -1,0 +1,44 @@
+services:
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./backend:/var/www
+    depends_on:
+      - php
+    networks:
+      - asador_net
+
+  php:
+    build:
+      context: ./docker/php
+    volumes:
+      - ./backend:/var/www
+    depends_on:
+      - mysql
+    networks:
+      - asador_net
+
+  mysql:
+    image: mysql:8.0
+    ports:
+      - "3307:3306"          # 3307 en host para no chocar con XAMPP
+    environment:
+      MYSQL_DATABASE: asador_artesano
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: asador
+      MYSQL_PASSWORD: secret
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - asador_net
+
+volumes:
+  mysql_data:
+
+networks:
+  asador_net:
+    driver: bridge
