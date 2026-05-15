@@ -1,0 +1,35 @@
+# ── Dependencias ──────────────────────────────
+node_modules/
+
+# ── Laravel ───────────────────────────────────
+backend/.env
+backend/.env.backup
+backend/.env.production
+backend/storage/logs/*.log
+backend/storage/framework/cache/
+backend/storage/framework/sessions/
+backend/storage/framework/views/
+backend/bootstrap/cache/*.php
+backend/vendor/
+
+# ── React / Vite ──────────────────────────────
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.local
+frontend/.env.production
+
+# ── Build compilado que va en Laravel ─────────
+backend/public/build/
+
+# ── Docker / entorno local ────────────────────
+.env
+docker-compose.override.yml
+*.log
+
+# ── OS / IDEs ─────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
